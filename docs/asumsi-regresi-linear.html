@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Asumsi Regresi Linear | Analisis Regresi</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Asumsi Regresi Linear | Analisis Regresi" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Asumsi Regresi Linear | Analisis Regresi" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Andri Faisal" />
+
+
+<meta name="date" content="2024-12-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="persiapan-data.html"/>
+<link rel="next" href="regresi-logistik.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Analisis Regresi</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Tentang Buku</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cara-menggunakan-buku-ini"><i class="fa fa-check"></i>Cara Menggunakan Buku ini</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i>Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assalamu-alaikum-pembaca.html"><a href="assalamu-alaikum-pembaca.html"><i class="fa fa-check"></i>Assalamu ’alaikum Pembaca</a>
+<ul>
+<li class="chapter" data-level="" data-path="assalamu-alaikum-pembaca.html"><a href="assalamu-alaikum-pembaca.html#sekapur-sirih"><i class="fa fa-check"></i>Sekapur Sirih</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="pendahuluan.html"><a href="pendahuluan.html"><i class="fa fa-check"></i><b>1</b> Pendahuluan</a></li>
+<li class="chapter" data-level="2" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html"><i class="fa fa-check"></i><b>2</b> Regresi Linear Sederhana</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html#grafik-pencar-atau-scatter-graph"><i class="fa fa-check"></i><b>2.1</b> Grafik Pencar atau Scatter Graph</a></li>
+<li class="chapter" data-level="" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html#keterbatasan-regresi-linear"><i class="fa fa-check"></i>Keterbatasan Regresi Linear</a></li>
+<li class="chapter" data-level="" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html#perbedaan-nilai-r2-dengan-koefisien-korelasi"><i class="fa fa-check"></i>Perbedaan nilai R2 dengan koefisien Korelasi</a>
+<ul>
+<li class="chapter" data-level="" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html#ketebatasan"><i class="fa fa-check"></i>Ketebatasan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="regresi-linier-berganda.html"><a href="regresi-linier-berganda.html"><i class="fa fa-check"></i><b>3</b> Regresi Linier Berganda</a></li>
+<li class="chapter" data-level="4" data-path="persiapan-data.html"><a href="persiapan-data.html"><i class="fa fa-check"></i><b>4</b> Persiapan Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="persiapan-data.html"><a href="persiapan-data.html#paket-yang-dibutuhkan"><i class="fa fa-check"></i>Paket yang dibutuhkan</a></li>
+<li class="chapter" data-level="4.1" data-path="persiapan-data.html"><a href="persiapan-data.html#goodnes-of-fit"><i class="fa fa-check"></i><b>4.1</b> Goodnes of fit</a></li>
+<li class="chapter" data-level="4.2" data-path="persiapan-data.html"><a href="persiapan-data.html#regresi-berganda-menggunakan-data-rstudio"><i class="fa fa-check"></i><b>4.2</b> Regresi berganda menggunakan data rstudio</a></li>
+<li class="chapter" data-level="" data-path="persiapan-data.html"><a href="persiapan-data.html#istilah"><i class="fa fa-check"></i>Istilah</a></li>
+<li class="chapter" data-level="4.3" data-path="persiapan-data.html"><a href="persiapan-data.html#regresi-dengan-menggunakan-data-panel"><i class="fa fa-check"></i><b>4.3</b> Regresi dengan menggunakan Data Panel</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="persiapan-data.html"><a href="persiapan-data.html#membuat-struktur-data-panel"><i class="fa fa-check"></i><b>4.3.1</b> Membuat Struktur Data Panel</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="persiapan-data.html"><a href="persiapan-data.html#soal"><i class="fa fa-check"></i>Soal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html"><i class="fa fa-check"></i><b>5</b> Asumsi Regresi Linear</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#multikolinearitas."><i class="fa fa-check"></i><b>5.1</b> Multikolinearitas.</a></li>
+<li class="chapter" data-level="5.2" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#autokorelasi"><i class="fa fa-check"></i><b>5.2</b> Autokorelasi</a></li>
+<li class="chapter" data-level="5.3" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#heteroskedatisitas"><i class="fa fa-check"></i><b>5.3</b> Heteroskedatisitas</a>
+<ul>
+<li class="chapter" data-level="" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#ibarat-memperbaiki-kursi"><i class="fa fa-check"></i>Ibarat memperbaiki Kursi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#asumsi-normalitas"><i class="fa fa-check"></i><b>5.4</b> Asumsi Normalitas</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regresi-logistik.html"><a href="regresi-logistik.html"><i class="fa fa-check"></i><b>6</b> Regresi Logistik</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="regresi-logistik.html"><a href="regresi-logistik.html#contoh-regresi-logistik-dalam-rstudio"><i class="fa fa-check"></i><b>6.1</b> Contoh Regresi Logistik dalam Rstudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="regresi-logistik.html"><a href="regresi-logistik.html#uji-asumsi-model"><i class="fa fa-check"></i>Uji Asumsi model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="regresi-logistik.html"><a href="regresi-logistik.html#bagaimana-interprestasi-model"><i class="fa fa-check"></i><b>6.2</b> Bagaimana interprestasi model ?</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="regresi-dengan-data-kategori-dummy.html"><a href="regresi-dengan-data-kategori-dummy.html"><i class="fa fa-check"></i><b>7</b> Regresi Dengan Data Kategori (Dummy)</a></li>
+<li class="chapter" data-level="8" data-path="regresi-non-linear.html"><a href="regresi-non-linear.html"><i class="fa fa-check"></i><b>8</b> Regresi Non Linear</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="regresi-non-linear.html"><a href="regresi-non-linear.html#mendeteksi-awal"><i class="fa fa-check"></i><b>8.1</b> Mendeteksi awal</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>9</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>9.1</b> Footnotes</a></li>
+<li class="chapter" data-level="9.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>9.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>10</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>10.1</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="10.2" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>10.2</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/AndriFaisal/Regresi" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analisis Regresi</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="asumsi-regresi-linear" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Asumsi Regresi Linear<a href="asumsi-regresi-linear.html#asumsi-regresi-linear" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Setiap metode yang kita apakah harus kita ingat mempunyau syarat dan kondisi. Seperti kita mau membeli suatu maka kita menemukan suatau kondisi yang harus kita penuhi . Tanpa syarat dan kondisi tersebut maka kita tidak akan mendapatkan apa yang kita maui. Ada beberapa gejala kalau tidak bisa dibilang penyakit yang terdapat pada Regresi linear. Hal tersebut harus kita lewati sebagai syarat nilai peramalan dan juga koefisien determinasi dari regresi tersebut benar-benar valid.
+Dalam kalkulasi suatu persamaan regresi kita bisa menghasilkan nilai peramalan yang berbeda anatara satu dengan yang lainnya. Bukan salah menghitungnya karena memang sudah sedemikian begitu datanya. Ada beberapa penyebab yang menyebabkan dan biasanya adanya outlier. Bisa jadi kesalahan dalam mengumpulkan data juga turut serta dalam menghasilkan peramalan yang salah. Sudah nilai tersebut salah maka salah karenanya asumsi inilah yang harus diperbaiki.
+Ada beberapa hal yang membuat regresi tersebut tidak akan menjadi valid yang bisa kita perhatikan seperti ini:</p>
+<div id="multikolinearitas." class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Multikolinearitas.<a href="asumsi-regresi-linear.html#multikolinearitas." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Kita mau mencari hubungan anatara variabel independen dengan variabel yang dependen, hanya saja terjadi hubungan yang baik antara variabel independen dengan variabel independen juga atau sesama variabel independen. Hubungan ini tidak bisa dibiarkan karena akan menyebabkan variabel tersebut merusak nilai perhitungan dari regresi.
+Hubungan sesama variabel independen dapat menyebabkan nilai R begitu tinggi, namun penduga (peramalannya menjadi bias). Untuk itu hal ini harus diatasi dengan cara membuang salah satu variabel yang sama.
+Sebenarnya tidak terlalu sulit untuk menduga akan terjadinya multikolinearitas . Ketika kita melihat ada data tabel yang begitu mirip antara sesama variabel independen, kita harus mengecek apakah kita menyalin data yang sama untuk variabel yang berbeda. Terkadang salah satu data merupakan kelipatan dari data yang lainnya dan inilah yang menyebabkan korelasi begitu tinggi. Pastikan juga tidak ada data yang sama masuk ke dalam variable yang berbeda. Jika yakin ternyata data tersebut juga memang benar maka bisa jadi itu data memang mempunyai sifat yang sama. Hubungan antara korelasi keduanya sangat besar sekali hampir sampai lebih dari 80%. Kalau kita menggunakan Korelasi Pearson maka kita akan mendapatkan nilai korelasi yang tinggi.<br />
+Kesalahan ini bisa jadi karena memang datanya seperti itu. Seperti harga ayam kampung dengan harga ayam ras maka kita bisa pastikan keduanya mempunyai hubungan yang positif. Kalau harga ayam ras naik maka harga ayam kampung juga naik. Meski keduanya mempunyai harga yang berbeda namun mempunyai peluang untuk naik pada waktu yang sama atau turun pada waktu yang sama.
+Untuk mendeteksi dari gejala ini adalah dengan melihat nilai VIF yang ada dalam software statistik. Nilai VIF yang lebih besar dari 10 maka terjadi yang namanya multikolinearitas. Kemudian ada juga nilai eugin value yang lebih dari 0,001.
+Untuk mengatasi multikolinearitas adalah tidak sulit. Hanya saja pilihannya adalah membuang salah satu variable dalam regresi multi variable. Hanya saja masalahnya adalah pilihan yang mana yang mau dibuang kadang ini menjadi pilihan yang dilematis.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="asumsi-regresi-linear.html#cb17-1" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
+<pre><code>## Warning: package &#39;car&#39; was built under R version 4.3.1</code></pre>
+<pre><code>## Loading required package: carData</code></pre>
+<pre><code>## Warning: package &#39;carData&#39; was built under R version 4.3.1</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="asumsi-regresi-linear.html#cb21-1" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
+<span id="cb21-2"><a href="asumsi-regresi-linear.html#cb21-2" tabindex="-1"></a><span class="fu">vif</span>(regresimtcars1)</span></code></pre></div>
+<pre><code>##      cyl     disp 
+## 5.366629 5.366629</code></pre>
+<p>HAsil dari regresi tersebut menunjukan tidak terjadinya apa yang namanya multiklineartiast karena nilainya adalah 5,366629 atau masih dibawah nilai VIF=10</p>
+</div>
+<div id="autokorelasi" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Autokorelasi<a href="asumsi-regresi-linear.html#autokorelasi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nilai Autokorelasi terjadi ketika deret waktu mempunyai nilai galat (error) yang berkorelasi .Hal ini terjadi karena data berseri (time series) yang ada dalam suatu model. Pada beberapa kasus ternyata data cross section sendiri juga dapat mengalami autokorelasi. Pada autokorelasi terjadi karena galat yang berubah menurut waktu.</p>
+<p>Untuk menilai apakah adanya terjadinya korelasi, kita dapat menggunakan kriteria sebagai berikut yakni dl (Durbin lower) yang berarati nilai Durbin terendah atau du (Durbin upper) yang berarti nilai durbin di atas. Semua nilai yang berada di antara kedua nilai tersebut harus memenuhi syarat sehingga, model yang kita buat sudah dikatakan terbebas dari autokorelasi.</p>
+<p>Autokorelasi adalah suatu hubungan galat atau error yang berhubungan. Hubungan tersebut akan semakin membesar dan semakin mengecil pada tingkat peramalan yang dibuat oleh model yang memiliki gejala autokorelasi. Mau tidak mau nilai dari autokorelasi harus dihilangkan terlebih dahulu. Dengan kata lain kita harus membuat sesuatu model yang terbebas dari autokorelasi. Apapun regresi yang terjadi kesalahan termasuk autokrelasi karena adanya data tersebut. Karenanya pastikan terlebih dahulu data yang anda kumpulkan tersebut memang sudah benar. Setelah yakin kalau sudah melakukan regresi lagi.</p>
+<p>Untuk mendeteksi gejala ini kita mengamati pola residual terhadap urutannya atau t. Kalau data residual mempunyai pola tertentu baik meningkat maupun menurun maka patut dicurigai terjadinya autokorelasi. Kalau data tidak mempunyai pola <strong>(pattern)</strong> atau data tersebar dengan bebas maka tidak terjadi autokorelasi.</p>
+<p>Selain melakukan uji Durbin Watson kita bisa melakukan uji yang lain seperti Ljung Box uji ini juga dapat untuk menduga regresi yang kita lakukan. Uji ini akan menempatkan H0 atau Hipotesis nol adalah hasil regresi terdapat mengandung autokorelasi sedangkan hipotesis alternatif (Ha) menunjukkan kalau tidak ada autokorelasi dalam model yang diuji.</p>
+<p>Nilai Durbin Watson yang dikembangkan mempunyai rumus seperti di bawah ini <a href="asumsi-regresi-linear.html#eq:durbin">(5.1)</a></p>
+<p><span class="math display" id="eq:durbin">\[\begin{equation}
+du=  (∑_(t=1)^n(e_(t-1)-e_t )^2 )/(e_t^2 )
+\tag{5.1}
+\end{equation}\]</span></p>
+<p>Dengan et = nilai error ke t
+et-1 = nilai error ke t-1</p>
+<p>Dalam uji ini ditetapkan sebagai Hipotesis nol adalah jika terjadi autokorelasi sedangkan Ha diterima jika terjadi autokorelasi</p>
+<p>H0 : ρ = 0 tidak terjadi autokrelasi
+Ha : ρ ≠ 0 terjadi autokorelasi</p>
+<p>Autokorelasi itu terjadi karena danya kandungan data series tetapi seperti disinggung diatas kalau data cross section pun juga menjadi autokorelasi untuk mengatasi adalah kita bisa melakukan hal seperti ini. Kita menggunakan differencing pada data time series. Setelah difference atau pembedaan ada kemungkinan data time series juga bisa diperbaiki.</p>
+<p>Salah satu mengatasi dengan menggunakan lag. Lag ini adalah konsekuensi dengan nilai dari regresi tersebut. Ada beberapa variable respon tidak selalu merespon dengan cepat. Karenanya ada sebuah respon tersebut maka aka nada repson yang terlambat sekali . Adapun bentuk antisipasi memang semuanya bervariasi karena memang tidak langsung. Bahkan kita curiga kalau suatu reaksi sudah diketahui sebelumnya berarti ada efek antisipasi oleh respon tersebut.</p>
+<p>Untuk memeriksa apakah adanya autokorelasi maka kita bisa melakukan hal seperti ini yakni menggunakan dwtest yang ada di package lmtest;</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="asumsi-regresi-linear.html#cb23-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span></code></pre></div>
+<pre><code>## Warning: package &#39;lmtest&#39; was built under R version 4.3.1</code></pre>
+<pre><code>## Loading required package: zoo</code></pre>
+<pre><code>## Warning: package &#39;zoo&#39; was built under R version 4.3.1</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="asumsi-regresi-linear.html#cb29-1" tabindex="-1"></a><span class="fu">dwtest</span>(regresimtcars1)</span></code></pre></div>
+<pre><code>## 
+##  Durbin-Watson test
+## 
+## data:  regresimtcars1
+## DW = 1.5965, p-value = 0.09521
+## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+<p>kemudian jalankan dwtets hasilnya menunjukkan nilainya tdiak signifikan berarti menerima hipotesis nol yang menunjukkan tidak terjadinya autokorelasi</p>
+</div>
+<div id="heteroskedatisitas" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Heteroskedatisitas<a href="asumsi-regresi-linear.html#heteroskedatisitas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pada mengumpulkan data, kita mungkin kurang memperhatikan adanya variance yang berbeda. Seharusnya dalam peramalan regresi juga kita harus memperhatikan asumsi bahwa error tidak berbeda E( ε ) = 0. Adanya perbedaan karena memang sulit sekali bagi regresi linear untuk mencari nilai yang paling mendekati dengan garis persamaan regresi yang mendekati dari data tersebut.</p>
+<p>Hal ini harus segera dipebaiki. Sebelum kita melihat adanya dugaan heteroskedatisitas kita harus melihat terlebih dahulu adanya potensi dari heteroskedatisitas. Kita tahu adanya variance yang berbeda antara Y prediksi. Tentu untuk meminimalkan kita bisa menghilangkan hal tersebut. Penyebab dari terjadinya heteroskeditas adalah nilai yang ekstrim atau outlier dalam data. Maka data outlier tersebut jauh dari peramalan sedangkan kita sulit untuk membuat ramalan yang tepat.
+Dalam hal ini kitameyakini tidak adanya heterosekdatistiasta dalam model ini menggunakan uji studentdized Breusch-Pagan Test. Dalam uji ini RStudio akan mengelola nilai galat tersebut. DAri uji maka</p>
+<p>Ho ; Tidak Terjadi Hteroskedatisitas
+H1 : Terjadi Heteroskedatitisitas</p>
+<p>Kalau nilai peluang (p-value) &gt; dari 0,005 maka kita akan menerima HO</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="asumsi-regresi-linear.html#cb31-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb31-2"><a href="asumsi-regresi-linear.html#cb31-2" tabindex="-1"></a><span class="fu">bptest</span>(regresimtcars1)</span></code></pre></div>
+<pre><code>## 
+##  studentized Breusch-Pagan test
+## 
+## data:  regresimtcars1
+## BP = 5.3769, df = 2, p-value = 0.06799</code></pre>
+<p>Di awal mungkin kita tidak bisa untuk menebak atau menduga apakah yang terjadi dalam regresi kita tetapi kita bisa lakukan antara lain</p>
+<p>Plot scatter antara predictor value dan residual kalau memuat grafik seperti pola topi runcing atau cone, maka akan adanya heteroskedatisitas</p>
+<p>Plot scatter antara nilai yang diprediksi dan residual kalau berbentuk seperti pola tertentu bisa jadi pola sebaran itu seperti ada garis yang mempunyai trend cenderung ke atas atau ke bawah. Ada sekumpulan garis residual yang membentuk suatu pola. Tentu hal ini tidak baik karena menunjukkan adanya pola tertentu. kita bisa melakukan seperti mmembuat plot dari taksiran dan juga residual <span class="citation">Marliana (<a href="#ref-Marliana2017">2017</a>)</span>.</p>
+<p>Breusch pagan dan white test adalah untuk mendeteksi adanya heterosskedatisitas dengan cara menghitung. BReusch Pagan akan menghitung nilai <a href="asumsi-regresi-linear.html#eq:BP">(5.2)</a></p>
+<p><span class="math display" id="eq:BP">\[\begin{equation}
+BR=  n.R^2
+\tag{5.2}
+\end{equation}\]</span></p>
+<p>Setelah kita mengetahui adanya gejala heteroskedatisitas maka kita harus memperbaiki hal tersebut. Ada beberapa hal namun sebelum kita memperbaiki kita harus melihat dulu mengapa terjadi heteroskedatistas</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="asumsi-regresi-linear.html#cb33-1" tabindex="-1"></a><span class="fu">residuals</span>(regresimtcars1)</span></code></pre></div>
+<pre><code>##           Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive 
+##         -0.84395255         -0.84395255         -3.28885510          1.57324352 
+##   Hornet Sportabout             Valiant          Duster 360           Merc 240D 
+##          4.14732774         -2.40601638         -0.25267226         -0.89226849 
+##            Merc 230            Merc 280           Merc 280C          Merc 450SE 
+##         -2.61371193         -2.48751693         -3.88751693          0.11418581 
+##          Merc 450SL         Merc 450SLC  Cadillac Fleetwood Lincoln Continental 
+##          1.01418581         -1.08581419         -1.84730532         -2.09430892 
+##   Chrysler Imperial            Fiat 128         Honda Civic      Toyota Corolla 
+##          1.79401841          5.70804444          3.64629354          7.05160883 
+##       Toyota Corona    Dodge Challenger         AMC Javelin          Camaro Z28 
+##         -4.33979314          0.08281514         -0.50535572         -1.45850859 
+##    Pontiac Firebird           Fiat X1-9       Porsche 914-2        Lotus Europa 
+##          5.47067308          0.61421953          0.16432359          4.04561603 
+##      Ford Pantera L        Ferrari Dino       Maserati Bora          Volvo 142E 
+##          1.06207504         -2.45270705         -0.76710662         -4.42126787</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="asumsi-regresi-linear.html#cb35-1" tabindex="-1"></a>taksiran<span class="ot">&lt;-</span><span class="fu">fitted</span>(regresimtcars1)</span>
+<span id="cb35-2"><a href="asumsi-regresi-linear.html#cb35-2" tabindex="-1"></a>kresid<span class="ot">=</span><span class="fu">residuals</span>(regresimtcars1)<span class="sc">*</span><span class="fu">residuals</span>(regresimtcars1)</span>
+<span id="cb35-3"><a href="asumsi-regresi-linear.html#cb35-3" tabindex="-1"></a><span class="fu">plot</span>(taksiran,kresid)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Hetereoskedatisitas mengakibatkan peramalan menjdi bias membuat estimasi tidak efisien. Dalam regresi heteroskedatisitas mengakibatkan nilai t akan besar sehingga seolah terlihat nilai yang sangat signifikan. Nilai tersebut tentu tidak baik dan tidak mencerminkan nilai yang sesungguhnya. Supranto</p>
+<div id="ibarat-memperbaiki-kursi" class="section level3 unnumbered hasAnchor">
+<h3>Ibarat memperbaiki Kursi<a href="asumsi-regresi-linear.html#ibarat-memperbaiki-kursi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ketika kita memperbaiki suatau gejala contoh autokorelasi bisa jadi heteroskedatisitas yang tadinya belum ada akan muncul. Hal ini bisa terjadi kalau perbaikan pada kita seperti kita memukul kayu di suatu tempat maka akan ada yang terpukul di lain pihak hal itu biasa saja dalam praktik untuk membuat suatu model yang tepat . Maunya kita membetulkan satu namun tidak merusak yang lain tapi itu tidak bisa terjadi. Kalau kita mengetahui akar masalahnya maka kita akan bisa menyelesaikan masalahnya.</p>
+<p>Terkadang beberapa hal yang banyak yang sudah kita laakukan namun belum memasukkan atau belum menemukan suatu model yang sudah terbebas dari keseluruhan asumsi normal yang menjadi syarat dalam regresi sudah terbebas. Baru model tersebut dapat dikatakan menjadi estimator atau penduga yang baik.</p>
+<p>Untuk itu memang perlu kesabaran dari proses pengolahan data tersebut. Karena adalah hal yang ketentuan bisa menjadi berubah maka hal itu harus melewati revisi juga.</p>
+<p>Regresi linier sederhana Regresi linier bergabda
+Asumsi Normal V V
+Multikolinearitas X V
+Heteroskedatiositas V V
+Autokorelasi V V</p>
+</div>
+</div>
+<div id="asumsi-normalitas" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Asumsi Normalitas<a href="asumsi-regresi-linear.html#asumsi-normalitas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Kembali lagi ke dalam stataistik dasar kalau kita tahu bahwa regresi tersebut juga memiliki data yang normal atau normalitas. Nilai residual dari peramalan tersebut terdistribusi normal. Jadi bukan datanya yang terdistribusi normal. Ketika hasil regresi linier berganda ini adalah kita akan melihat nilai residual adalah normal atau terdistribusi normal. Data yang normal adalah data yang tersebar menurut seperti lonceng tersebut. Data yang tidak tersebar normal berarti ada sesuatu yang tidak sesuai. Karenannya hasil prediksi dari data tidak normal menjadi tidak konssten.</p>
+<p>Untuk membuktikan kalau sebuah hasil residual terdistribusi normal maka kita bisa melihat dari table satu grafik batang yang menunjukkan sebaran yang normal. Sebaran normal seperti bentuk gunung yang simetris atau lonceng yang simetris. Baik sisi Kanan dan kiri mempunyai dua sisi yang terbagi sempurna. Kalau sudah seperti ini mska data akn tersebar normal. Pada dasarnya kita sulit sekali mendapatkan sesuatu ynag normal. Terkadang dan memang seringnya muncul grafik yang tidak normal. Hal ini biasa saja karena persebaran data tersebut sering tidak normal apalagi kalau menggunakan data yang dalam jumlah terbaras. Ada kemungkinan data akan mempunyai banyak outlier yang akan menyebabkan residual malah tidak baik model permalannya</p>
+<p>KIta menggunakan uji Shapiro test akan seperti ini adalah
+Dalam melakukan uji regresi kita harus memastikan kalau data tersebut juga harus mempunyai normal.Data yang tersebar normal ini penting untuk memastikan kalau hasil regresi tersebut menjadi sah. Untuk melakukan itu kita bisa melalukan uji baik dengan test Shapiro-Wilk Normality Test atau kita juga menggunakan qqnorm atau qqline dari reisudal tersebut.</p>
+<p>Melakukan uji normalitas pada data dengan Shapiro Wilk test adalah dengan mengetikan perintah shapiro.test terhadap residual regresi mt cars. Dari sana terlihat output tersebut</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="asumsi-regresi-linear.html#cb36-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(regresimtcars1))</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  residuals(regresimtcars1)
+## W = 0.9419, p-value = 0.08479</code></pre>
+<p>Kita juga dapat melihat dengan plot ini untuk meyakinkan kalau data tersebar normal. Hasil nilai dari Shapiro adalah 0,9419. Dalam uji ini Nilai Ho adalah Data tersebar normal sedangkan Hipotesis Alternatif (Ha) dari uji ini adalah data tdiak tersebar normal. Aturan dalam uji ini jika nilai p (P-Value) ebih besar dari 0,05 (p&gt;0,05) maka keputusan dari uji ini dalah tidak bisa menolak HO. Artinya Data pada reiduals ini adalah tersebar dengan normal.</p>
+<p>Selain itu kita bisa melakukan dengan grafil normal qq plot. Dengan data itu kita bisa untuk melihat adanya data yang tersebar normal. Kita bisa menggunakan perintah qq normal dengan residuas. Kemudian kita bisa menambahkan qqline. Agar terlihat garis data normalitasnya.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="asumsi-regresi-linear.html#cb38-1" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(regresimtcars1))</span>
+<span id="cb38-2"><a href="asumsi-regresi-linear.html#cb38-2" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(regresimtcars1))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Marliana2017" class="csl-entry">
+Marliana, Reny Rian. 2017. <em>Pratktikum Statistika Dan Probabilitas</em>. 1st ed. Sumedang, Jawa Barat. <a href="https://www.researchgate.net/publication/326111304_MODUL_1_PROBABILITAS_DAN_STATISTIKA?channel=doi&amp;linkId=5b39ad41a6fdcc8506e72093&amp;showFulltext=true">https://www.researchgate.net/publication/326111304_MODUL_1_PROBABILITAS_DAN_STATISTIKA?channel=doi&amp;linkId=5b39ad41a6fdcc8506e72093&amp;showFulltext=true</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="persiapan-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regresi-logistik.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/AndriFaisal/Regresi/Main/03-parts.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

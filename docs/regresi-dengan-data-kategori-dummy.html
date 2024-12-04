@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Regresi Dengan Data Kategori (Dummy) | Analisis Regresi</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Regresi Dengan Data Kategori (Dummy) | Analisis Regresi" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Regresi Dengan Data Kategori (Dummy) | Analisis Regresi" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Andri Faisal" />
+
+
+<meta name="date" content="2024-12-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regresi-logistik.html"/>
+<link rel="next" href="regresi-non-linear.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Analisis Regresi</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Tentang Buku</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cara-menggunakan-buku-ini"><i class="fa fa-check"></i>Cara Menggunakan Buku ini</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i>Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assalamu-alaikum-pembaca.html"><a href="assalamu-alaikum-pembaca.html"><i class="fa fa-check"></i>Assalamu ’alaikum Pembaca</a>
+<ul>
+<li class="chapter" data-level="" data-path="assalamu-alaikum-pembaca.html"><a href="assalamu-alaikum-pembaca.html#sekapur-sirih"><i class="fa fa-check"></i>Sekapur Sirih</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="pendahuluan.html"><a href="pendahuluan.html"><i class="fa fa-check"></i><b>1</b> Pendahuluan</a></li>
+<li class="chapter" data-level="2" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html"><i class="fa fa-check"></i><b>2</b> Regresi Linear Sederhana</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html#grafik-pencar-atau-scatter-graph"><i class="fa fa-check"></i><b>2.1</b> Grafik Pencar atau Scatter Graph</a></li>
+<li class="chapter" data-level="" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html#keterbatasan-regresi-linear"><i class="fa fa-check"></i>Keterbatasan Regresi Linear</a></li>
+<li class="chapter" data-level="" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html#perbedaan-nilai-r2-dengan-koefisien-korelasi"><i class="fa fa-check"></i>Perbedaan nilai R2 dengan koefisien Korelasi</a>
+<ul>
+<li class="chapter" data-level="" data-path="regresi-linear-sederhana.html"><a href="regresi-linear-sederhana.html#ketebatasan"><i class="fa fa-check"></i>Ketebatasan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="regresi-linier-berganda.html"><a href="regresi-linier-berganda.html"><i class="fa fa-check"></i><b>3</b> Regresi Linier Berganda</a></li>
+<li class="chapter" data-level="4" data-path="persiapan-data.html"><a href="persiapan-data.html"><i class="fa fa-check"></i><b>4</b> Persiapan Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="persiapan-data.html"><a href="persiapan-data.html#paket-yang-dibutuhkan"><i class="fa fa-check"></i>Paket yang dibutuhkan</a></li>
+<li class="chapter" data-level="4.1" data-path="persiapan-data.html"><a href="persiapan-data.html#goodnes-of-fit"><i class="fa fa-check"></i><b>4.1</b> Goodnes of fit</a></li>
+<li class="chapter" data-level="4.2" data-path="persiapan-data.html"><a href="persiapan-data.html#regresi-berganda-menggunakan-data-rstudio"><i class="fa fa-check"></i><b>4.2</b> Regresi berganda menggunakan data rstudio</a></li>
+<li class="chapter" data-level="" data-path="persiapan-data.html"><a href="persiapan-data.html#istilah"><i class="fa fa-check"></i>Istilah</a></li>
+<li class="chapter" data-level="4.3" data-path="persiapan-data.html"><a href="persiapan-data.html#regresi-dengan-menggunakan-data-panel"><i class="fa fa-check"></i><b>4.3</b> Regresi dengan menggunakan Data Panel</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="persiapan-data.html"><a href="persiapan-data.html#membuat-struktur-data-panel"><i class="fa fa-check"></i><b>4.3.1</b> Membuat Struktur Data Panel</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="persiapan-data.html"><a href="persiapan-data.html#soal"><i class="fa fa-check"></i>Soal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html"><i class="fa fa-check"></i><b>5</b> Asumsi Regresi Linear</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#multikolinearitas."><i class="fa fa-check"></i><b>5.1</b> Multikolinearitas.</a></li>
+<li class="chapter" data-level="5.2" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#autokorelasi"><i class="fa fa-check"></i><b>5.2</b> Autokorelasi</a></li>
+<li class="chapter" data-level="5.3" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#heteroskedatisitas"><i class="fa fa-check"></i><b>5.3</b> Heteroskedatisitas</a>
+<ul>
+<li class="chapter" data-level="" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#ibarat-memperbaiki-kursi"><i class="fa fa-check"></i>Ibarat memperbaiki Kursi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="asumsi-regresi-linear.html"><a href="asumsi-regresi-linear.html#asumsi-normalitas"><i class="fa fa-check"></i><b>5.4</b> Asumsi Normalitas</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regresi-logistik.html"><a href="regresi-logistik.html"><i class="fa fa-check"></i><b>6</b> Regresi Logistik</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="regresi-logistik.html"><a href="regresi-logistik.html#contoh-regresi-logistik-dalam-rstudio"><i class="fa fa-check"></i><b>6.1</b> Contoh Regresi Logistik dalam Rstudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="regresi-logistik.html"><a href="regresi-logistik.html#uji-asumsi-model"><i class="fa fa-check"></i>Uji Asumsi model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="regresi-logistik.html"><a href="regresi-logistik.html#bagaimana-interprestasi-model"><i class="fa fa-check"></i><b>6.2</b> Bagaimana interprestasi model ?</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="regresi-dengan-data-kategori-dummy.html"><a href="regresi-dengan-data-kategori-dummy.html"><i class="fa fa-check"></i><b>7</b> Regresi Dengan Data Kategori (Dummy)</a></li>
+<li class="chapter" data-level="8" data-path="regresi-non-linear.html"><a href="regresi-non-linear.html"><i class="fa fa-check"></i><b>8</b> Regresi Non Linear</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="regresi-non-linear.html"><a href="regresi-non-linear.html#mendeteksi-awal"><i class="fa fa-check"></i><b>8.1</b> Mendeteksi awal</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>9</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>9.1</b> Footnotes</a></li>
+<li class="chapter" data-level="9.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>9.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>10</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>10.1</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="10.2" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>10.2</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/AndriFaisal/Regresi" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analisis Regresi</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regresi-dengan-data-kategori-dummy" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Regresi Dengan Data Kategori (Dummy)<a href="regresi-dengan-data-kategori-dummy.html#regresi-dengan-data-kategori-dummy" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Regresi dummy
+Kalai kota menetapkan Y sebagai variabel kategoriknitu berarti kita melakukan regresi logistik atau logit. Hanya saja ada yang masuk dalam variabel kategorik yang bisa kita gunakan untk menyelidiki hubungan kategorik dengan varoabel tertentu. Dalam regresi linear menggunakan data kategori sebagai variable independent dengan menamakan huruf satu dengan variable tertentu dan angka 0 untuk variable lainnya.
+Contoh perempuan yang cenderung rajin daripada laki-laki akan menghasilkan nilai yang lebih baik dari laki-laki. Tentu kasus per kasus akan berbeda dengan yang lainnya karena bisa jadi di beberapa bagian lelaki akan ada yang mempunyai prestasi lebih baik. Off course, kita bukan bicara mwngenai hal itu karena Statistik itu akan bicara banyak sample yang mewakili.</p>
+<p>Variabel kategori atau disebut dummy ini memang akan membuat sesuatu yang berbeda dengan variable yang lainnya. VAriabel ini bukan masuk dalam variable angka atau kuantitaif melainkan ini adalah variable
+Hal itu karena antara dua kategori itu ada hal yang berbeda seperti laki-laki dan perempuan. Pemaksaan untjk mencari nilai akan membuat sesuatu menjadi terpaksa dan akan terjadi nilia residual yang sangat besar sekali dan patutu diduga model regresi akan bias tidak memenuhi BLUE.
+Adanya aktegori ini sedikitnya melonggarkan .dalam satu persamaan ada aetidkanya dua kategori kalau dalam satu variabel. Maka kita akan membedakan anatara laki-laki dan perempuan. Untuk memudahkan maka si peneliti akan memberikan angka 0 untuk perempuan dan angka 1 untuk laki-laki. Seperti habg kita sudaj bahasa sebelumnya jika nilai peramalan atau corecast dari perempuan hanya berupa Beta Sajam karena nilai 0 akan menihilkan angka X maupun nilai Beta yang ada dalam persamaan. Sedangkan untuk nilai laki-laki akan mendapatkan tambahan dari Beta selain nilai dari alpha tentunya.</p>
+<p>Apakah model Dummy selalau dipakai. Hal itu tentu dengan kebutuhan yang ada. Kalau terajdi perbedaan yang behitu signifikan maka kita akan menggunakan hal seperti itu tetapi kalai kita yka wlihat hal yang penting maka kita pehih baik tidak usah memakai dummy.
+Bagaiaman anda membuat model?</p>
+<p>Membuat model bagi seorang yang pemula dan peneliti pemula adalah dengan menggunakan model yang sebelumnya. BUkan menyalin adalah sesuatua yang mudah. setidaknya dalam menggunakan model yang sudah ada karena model tersebut sudah terbukti . Kalau belum terbukti atau merancang memang akan sulit sekali dengan demikian. misalnya kita sudah pasti tdak ada perbedaan aanatara kecerdasan wanta dan laki-laki dalam ilmu bahasa maka akan sulit sekali mmenggunakan hal itu untuk membedakan anytara satu dengan yang lainnya. HAl itu menjadi percuma saja kalau kita tidak menemukan hal yang membedakan dalam modle tersebut maka lebih sederhana saja kita tidak usah untuk membuat modle sperti itu. KIat tinggal menggunakan regresi yang sudha biasa diguankan saja yang lebih sederhana maka itu akan lebih baik dan tidak perlu untuk membuat teori yang baru.
+Ketika anda bisa untuk mencari model yang membutuhkan dummy maka anda sebaiknya juga dapat mengikuti hal itu. HAl seperti ini</p>
+<p>Ketika sebuah regresi tidak memenuhi syarat kita mungkin bertanya apakah penyebabnya? Padahal kita sudah memenuhi asumsi yang sudah kita penuhi sebelumnya . Kita sudah melakukan perbaiki asumsi yang sudah ditetapkan.
+Permasalahan adalah bukan karena datanya. Kita sudah sepakat kalau data adalah netral. Ia seperti halnyaa bahan makanan yang segar tentu saja kalau anda memilih data yabg benar
+Data yang salah akan menghasilkan olahan yang salah. Sama seperti telur busuk yang akan menghasilkan kue yang dihasilkan dari telur busuk. Bagaimana rasanya? Pasti rasanya sudah tidak bagus lagi. Hal ini karena sudah buruk.
+Dalam membuat suatu model maka kita juga harus memperhatikan model yang sebelumnya sudah ada ini penting juga. Sebaiknya kita sudah mencontoh apa model apalagi hanya dalam tataran sekolah sarjana saja.</p>
+<p>Dengan mencontoh model bukan berarti plagaitor karena model yang sudah ada bisa menjadi rujukan bagi kita untuk menjadikan sebuah penelitian yang akan kita lakukan. Jika seorang peneliti muda maka mereka seharusnya membuat yang mirip saja atau duplikasi saja.</p>
+<p>Ketika kita memilih regresi maka kita tahu bahwa akan memeriksa hubungan antara satu faktor dengan faktor yang lainnya. Apakah ada hubungan dengan hubungan yang lain? Karena itu memang ada hubungannya dengan hubungan yang lain. Kalau tidak ada hubujgan dengan yang lain maka kita tidak bisa memeriksakannya. Kalaupun memqksakan visa jadi ada hubungan seperti yabg saya jelaskan namun hubunga tersebut tidak bisa valid.
+Salah satu cara meyakini adalah denga literatur. LIteratur tersebut adalah landasan kita untuk membuat
+Kira aka. Membagi beberapa hal yang bisa kita bagikan. Dalam hal ini kita menggunakan variabel dummy atau variabel boneka. Variabel ini menggunakan angka 10 dan 0. Lalu bagaimana penetapannya. Umumnya dua angka ini untuk membedakan. Jangan kita membuat sendiri tanpa adanya pertimbangan yang matang dengan hal itu. Kita harua bisa memberikan pertimbangan yang pas bagi model yang kita bangun. Sebab namanya statistik bisa dibuat apa saja.
+Setelah itu kita membagi kategori itu. Berapa yang hendak kita gunakan kategori. Kalau kita hanya menggunakan dua kategori maka kita hanya membutuhkan satu data dummy saja.
+Kalau kita mempunyai tiga kategori maka kita setidaknya bisa untuk membuat dua variabel dummy saja. Maka kalau kita mempunyai beberapa kategori kita akan membuat dengan banyaknya kategori dikurangi satu atau variabel atau</p>
+<p>banyaknya variabel dummy = kategori - 1</p>
+<p>Maka kita juga ahrus bijak dalam menggunakan variabel dummy tersebut karenan banyaknya akan kemungkinan membuat asusmi regresi bisa menjadi tidak terpenuhi terutama adalah masalah multikolinearitas. Maka kita harus membuatnya sesuai dengan kndis dan pemenuhan data. yang ada .</p>
+<p>Misalnya kita ingin membuat kategori pendidikan dari tiga tingkatan stratat yakni kategori bawah sarhjana , kategori sarjana , dan kategori di atas sarjana maka akan duibuat dua dummy variabel. yakni</p>
+<p>Y= a + b1.X1 + b2.D1.X + b3.D2.X + e</p>
+<p>kategori satu akan saya masukkan untuk sarhana sedangkan kategori dua adalah master maka yang bukan sarjana akan masuk dalam kategori tersebut. HAsilnya kita akan bsia melihat bahwa dnegan adanya data dummy tersebut maka saya bisa memprediksi ada perbedaan anatara beberapa kategori tersebut.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="regresi-dengan-data-kategori-dummy.html#cb47-1" tabindex="-1"></a><span class="co">#Regresi Data mytcars dengan variabel dummy</span></span>
+<span id="cb47-2"><a href="regresi-dengan-data-kategori-dummy.html#cb47-2" tabindex="-1"></a>mtcars</span></code></pre></div>
+<pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="regresi-dengan-data-kategori-dummy.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb49-2"><a href="regresi-dengan-data-kategori-dummy.html#cb49-2" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb49-3"><a href="regresi-dengan-data-kategori-dummy.html#cb49-3" tabindex="-1"></a><span class="co">#Kita regresi dengan data nominal atau dummy</span></span>
+<span id="cb49-4"><a href="regresi-dengan-data-kategori-dummy.html#cb49-4" tabindex="-1"></a><span class="co">#mengecek apakah ini variabel kategori</span></span>
+<span id="cb49-5"><a href="regresi-dengan-data-kategori-dummy.html#cb49-5" tabindex="-1"></a><span class="fu">is.factor</span>(mtcars<span class="sc">$</span>vs)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="regresi-dengan-data-kategori-dummy.html#cb51-1" tabindex="-1"></a><span class="co">#mengecek jenis atau kelas dari data</span></span>
+<span id="cb51-2"><a href="regresi-dengan-data-kategori-dummy.html#cb51-2" tabindex="-1"></a><span class="fu">class</span>(mtcars<span class="sc">$</span>vs)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="regresi-dengan-data-kategori-dummy.html#cb53-1" tabindex="-1"></a><span class="co">#mengecek tipe variabel</span></span>
+<span id="cb53-2"><a href="regresi-dengan-data-kategori-dummy.html#cb53-2" tabindex="-1"></a><span class="fu">str</span>(mtcars<span class="sc">$</span>vs)</span></code></pre></div>
+<pre><code>##  num [1:32] 0 0 1 1 0 1 0 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="regresi-dengan-data-kategori-dummy.html#cb55-1" tabindex="-1"></a><span class="co">#untuk mengecek semua data bisa kita lakukan seperti ini</span></span>
+<span id="cb55-2"><a href="regresi-dengan-data-kategori-dummy.html#cb55-2" tabindex="-1"></a><span class="fu">sapply</span>(mtcars,class)</span></code></pre></div>
+<pre><code>##       mpg       cyl      disp        hp      drat        wt      qsec        vs 
+## &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; 
+##        am      gear      carb 
+## &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="regresi-dengan-data-kategori-dummy.html#cb57-1" tabindex="-1"></a><span class="co">#atau</span></span>
+<span id="cb57-2"><a href="regresi-dengan-data-kategori-dummy.html#cb57-2" tabindex="-1"></a><span class="fu">sapply</span>(mtcars,is.factor)</span></code></pre></div>
+<pre><code>##   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb 
+## FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="regresi-dengan-data-kategori-dummy.html#cb59-1" tabindex="-1"></a><span class="co">#saya merubah faktor ke dalam bentuk kategorik (dummy)</span></span>
+<span id="cb59-2"><a href="regresi-dengan-data-kategori-dummy.html#cb59-2" tabindex="-1"></a>mtcars<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">factor</span>(mtcars<span class="sc">$</span>vs, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>))</span>
+<span id="cb59-3"><a href="regresi-dengan-data-kategori-dummy.html#cb59-3" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb59-4"><a href="regresi-dengan-data-kategori-dummy.html#cb59-4" tabindex="-1"></a>modeldummy<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="fu">log</span>(mpg)<span class="sc">~</span>wt<span class="sc">+</span>vs<span class="sc">+</span>disp,<span class="at">data=</span>mtcars)</span>
+<span id="cb59-5"><a href="regresi-dengan-data-kategori-dummy.html#cb59-5" tabindex="-1"></a><span class="fu">summary</span>(modeldummy)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(mpg) ~ wt + vs + disp, data = mtcars)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.14610 -0.09242 -0.03506  0.06273  0.27415 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  3.6181792  0.1042305  34.713   &lt;2e-16 ***
+## wt          -0.1792410  0.0501582  -3.574   0.0013 ** 
+## vs1          0.1033651  0.0636280   1.625   0.1155    
+## disp        -0.0005601  0.0004681  -1.197   0.2415    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1222 on 28 degrees of freedom
+## Multiple R-squared:  0.848,  Adjusted R-squared:  0.8317 
+## F-statistic: 52.07 on 3 and 28 DF,  p-value: 1.412e-11</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="regresi-dengan-data-kategori-dummy.html#cb61-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.1</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="regresi-dengan-data-kategori-dummy.html#cb63-1" tabindex="-1"></a><span class="fu">vif</span>(modeldummy3)</span></code></pre></div>
+<pre><code>##       wt       vs     disp 
+## 5.003628 2.136495 6.991296</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="regresi-dengan-data-kategori-dummy.html#cb65-1" tabindex="-1"></a><span class="fu">dwtest</span>(modeldummy)</span></code></pre></div>
+<pre><code>## 
+##  Durbin-Watson test
+## 
+## data:  modeldummy
+## DW = 1.8534, p-value = 0.2565
+## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="regresi-dengan-data-kategori-dummy.html#cb67-1" tabindex="-1"></a><span class="fu">bptest</span>(modeldummy)</span></code></pre></div>
+<pre><code>## 
+##  studentized Breusch-Pagan test
+## 
+## data:  modeldummy
+## BP = 3.376, df = 3, p-value = 0.3372</code></pre>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regresi-logistik.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regresi-non-linear.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/AndriFaisal/Regresi/Main/03-parts.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

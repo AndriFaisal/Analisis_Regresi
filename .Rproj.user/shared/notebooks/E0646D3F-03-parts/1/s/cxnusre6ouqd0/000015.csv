@@ -1,0 +1,5 @@
+"0","tobinq <- read.csv2(""~/jurnal/tobinq3.csv"")"
+"0","#setelah data diupload saya akan membuat data frame khusus panel yang disebut pdata frame dengan seperti ini. jangan lupa gunakan library plm"
+"0","library(plm)"
+"2","Warning: package ‘plm’ was built under R version 4.3.3"
+"0","ptobinq=pdata.frame(tobinq,index=c(""Comp"",""Tahun""),drop.index = TRUE,row.names=TRUE)"

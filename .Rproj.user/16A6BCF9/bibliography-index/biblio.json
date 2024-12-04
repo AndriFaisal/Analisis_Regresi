@@ -1,0 +1,534 @@
+{
+    "sources": [
+        {
+            "URL": "http://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "xie2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Heumann",
+                    "given": "Christian"
+                },
+                {
+                    "family": "Shalabih",
+                    "given": "Michael Schomaker"
+                }
+            ],
+            "edition": "2nd",
+            "id": "Heumann2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "note": "ISBN 978-3-319-46162-5",
+            "publisher": "Springer",
+            "publisher-place": "Cham, Switzerland",
+            "title": "Intoduction statistics",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Spiegel",
+                    "given": "Murray R."
+                },
+                {
+                    "family": "Stephen",
+                    "given": "Larry J."
+                }
+            ],
+            "edition": "4rd",
+            "id": "Spiegel2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 0-07-148584-8",
+            "publisher": "Mac Graw Hill",
+            "publisher-place": "New York",
+            "title": "Statistics",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Ryan",
+                    "given": "Thomas P."
+                }
+            ],
+            "edition": "1st",
+            "id": "Ryan2013",
+            "issued": {
+                "date-parts": [
+                    [
+                        2013
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1-118-43760-5",
+            "publisher": "John Wiley; Sons",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Sample size determination and power",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Galton",
+                    "given": "Francis"
+                }
+            ],
+            "container-title": "Antrophological Misscellanea",
+            "id": "Galton1886",
+            "issue": "",
+            "issued": {
+                "date-parts": [
+                    [
+                        1886
+                    ]
+                ]
+            },
+            "title": "Regression towards mediocrity in hereditary stature",
+            "type": "article-journal",
+            "volume": ""
+        },
+        {
+            "author": [
+                {
+                    "family": "Wooldrige",
+                    "given": "Jefreey"
+                }
+            ],
+            "edition": "5th",
+            "id": "Wooldridge2012",
+            "issued": {
+                "date-parts": [
+                    [
+                        2012
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1-111-53104-1",
+            "publisher": "Cengage",
+            "publisher-place": "Mason, OH",
+            "title": "Introducty econometrics",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Alexander Holmes",
+                    "suffix": "Barbarra Illowsky"
+                },
+                {
+                    "family": "Dean",
+                    "given": "Susan"
+                }
+            ],
+            "edition": "2nd",
+            "id": "Holmes2018",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1-947172-47-0",
+            "publisher": "OpenStax",
+            "publisher-place": "Houston, Texas",
+            "title": "Introduction business statistics",
+            "type": "book"
+        },
+        {
+            "URL": "https://hastie.su.domains/ISLR2/ISLRv2_corrected_June_2023.pdf.download.html",
+            "author": [
+                {
+                    "family": "Gareth James",
+                    "given": "Trevor Hastie",
+                    "suffix": "Daniella Witten"
+                },
+                {
+                    "family": "Thibsarani",
+                    "given": "Robert"
+                }
+            ],
+            "edition": "2nd",
+            "id": "James2023",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "publisher": "Springer",
+            "publisher-place": "Cham, Switzerland",
+            "title": "An intoduction to statistics learning",
+            "type": "book"
+        },
+        {
+            "URL": "https://www.r-bloggers.com/2015/09/how-to-perform-a-logistic-regression-in-r/",
+            "author": [
+                {
+                    "family": "Alice",
+                    "given": "Michy"
+                }
+            ],
+            "container-title": "R-Bloggers",
+            "id": "Alice2015",
+            "issue": "",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "title": "How to perform logistic regression in r",
+            "type": "article-journal",
+            "volume": ""
+        },
+        {
+            "URL": "https://www.researchgate.net/publication/326111304_MODUL_1_PROBABILITAS_DAN_STATISTIKA?channel=doi&linkId=5b39ad41a6fdcc8506e72093&showFulltext=true",
+            "author": [
+                {
+                    "family": "Marliana",
+                    "given": "Reny Rian"
+                }
+            ],
+            "edition": "1st",
+            "id": "Marliana2017",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "publisher-place": "Sumedang, Jawa Barat",
+            "title": "Pratktikum statistika dan probabilitas",
+            "type": "book"
+        },
+        {
+            "URL": "https://doi.org/10.55122/mediastima.v26i2.125",
+            "author": [
+                {
+                    "dropping-particle": "dan",
+                    "family": "Kampono Yulianto",
+                    "given": "Andri Faisal"
+                }
+            ],
+            "container-title": "Mediastima",
+            "id": "Faisal2020",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "title": "HUBUNGAN CAPITAL STRUCTURE DENGAN NILAI PERUSAHAAN PADA PERUSAHAAN PERTAMBANGAN BATUBARA YANG TERDAFTAR DI BURSA EFEK INDONESIA 2014-2019",
+            "type": "article-journal",
+            "volume": "26"
+        },
+        {
+            "URL": "https://www.R-project.org/",
+            "author": [
+                {
+                    "literal": "R Core Team"
+                }
+            ],
+            "id": "R-base",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "publisher": "R Foundation for Statistical Computing",
+            "publisher-place": "Vienna, Austria",
+            "title": "R: A language and environment for statistical computing",
+            "title-short": "R",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/rstudio/bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-bookdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "note": "R package version 0.41",
+            "title": "Bookdown: Authoring books and technical documents with r markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-knitr",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 1.45",
+            "title": "Knitr: A general-purpose package for dynamic report generation in r",
+            "title-short": "Knitr",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/rstudio/rmarkdown",
+            "author": [
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                },
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Dervieux",
+                    "given": "Christophe"
+                },
+                {
+                    "family": "McPherson",
+                    "given": "Jonathan"
+                },
+                {
+                    "family": "Luraschi",
+                    "given": "Javier"
+                },
+                {
+                    "family": "Ushey",
+                    "given": "Kevin"
+                },
+                {
+                    "family": "Atkins",
+                    "given": "Aron"
+                },
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                },
+                {
+                    "family": "Cheng",
+                    "given": "Joe"
+                },
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "Iannone",
+                    "given": "Richard"
+                }
+            ],
+            "id": "R-rmarkdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "note": "R package version 2.26",
+            "title": "Rmarkdown: Dynamic documents for r",
+            "title-short": "Rmarkdown",
+            "type": "book"
+        },
+        {
+            "ISBN": "978-1138700109",
+            "URL": "https://bookdown.org/yihui/bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "bookdown2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Bookdown: Authoring books and technical documents with R markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "knitr2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "container-title": "Implementing reproducible computational research",
+            "editor": [
+                {
+                    "family": "Stodden",
+                    "given": "Victoria"
+                },
+                {
+                    "family": "Leisch",
+                    "given": "Friedrich"
+                },
+                {
+                    "family": "Peng",
+                    "given": "Roger D."
+                }
+            ],
+            "id": "knitr2014",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1466561595",
+            "publisher": "Chapman; Hall/CRC",
+            "title": "Knitr: A comprehensive tool for reproducible research in R",
+            "title-short": "Knitr",
+            "type": "chapter"
+        },
+        {
+            "ISBN": "9781138359338",
+            "URL": "https://bookdown.org/yihui/rmarkdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "J. J."
+                },
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "id": "rmarkdown2018",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "R markdown: The definitive guide",
+            "title-short": "R markdown",
+            "type": "book"
+        },
+        {
+            "ISBN": "9780367563837",
+            "URL": "https://bookdown.org/yihui/rmarkdown-cookbook",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Dervieux",
+                    "given": "Christophe"
+                },
+                {
+                    "family": "Riederer",
+                    "given": "Emily"
+                }
+            ],
+            "id": "rmarkdown2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "R markdown cookbook",
+            "type": "book"
+        }
+    ],
+    "project_biblios": [
+        "book.bib",
+        "packages.bib"
+    ]
+}

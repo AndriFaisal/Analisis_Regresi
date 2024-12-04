@@ -1,0 +1,38 @@
+"0","library(lmtest)"
+"2","Warning: package ‘lmtest’ was built under R version 4.3.1"
+"2","Loading required package: zoo
+"
+"2","Warning: package ‘zoo’ was built under R version 4.3.1"
+"2","
+Attaching package: ‘zoo’
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+"
+"0","dwtest(regresimtcars1)"
+"1","
+"
+"1","	Durbin-Watson test"
+"1","
+"
+"1","
+"
+"1","data:  "
+"1",""
+"1","regresimtcars1"
+"1",""
+"1","
+"
+"1","DW = 1.5965, p-value = 0.09521"
+"1","
+"
+"1","alternative hypothesis: "
+"1","true autocorrelation is greater than 0"
+"1",""
+"1","
+"
+"1","
+"

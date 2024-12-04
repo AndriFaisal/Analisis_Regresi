@@ -1,0 +1,33 @@
+h1:pendahuluan Pendahuluan
+tab:nice-tab2 Here is a nice table 2!
+tab:nice-tab3 Here is a nice table 3!
+h1:regresi-linear-sederhana Regresi Linear Sederhana
+h2:grafik-pencar-atau-scatter-graph Grafik Pencar atau Scatter Graph
+fig:scatter-fig Diagram Scatter!
+h2:keterbatasan-regresi-linear Keterbatasan Regresi Linear
+h2:perbedaan-nilai-r2-dengan-koefisien-korelasi Perbedaan nilai R2 dengan koefisien Korelasi
+h3:ketebatasan Ketebatasan
+h1:regresi-linier-berganda Regresi Linier Berganda
+h1:persiapan-data Persiapan Data
+h2:paket-yang-dibutuhkan Paket yang dibutuhkan
+h2:goodnes-of-fit Goodnes of fit
+h2:regresi-berganda-menggunakan-data-rstudio Regresi berganda menggunakan data rstudio
+h2:istilah Istilah
+h2:regresi-dengan-menggunakan-data-panel Regresi dengan menggunakan Data Panel
+h3:membuat-struktur-data-panel Membuat Struktur Data Panel
+h2:soal Soal
+h1:asumsi-regresi-linear Asumsi Regresi Linear
+h2:multikolinearitas. Multikolinearitas.
+h2:autokorelasi Autokorelasi
+h2:heteroskedatisitas Heteroskedatisitas
+h3:ibarat-memperbaiki-kursi Ibarat memperbaiki Kursi
+h2:asumsi-normalitas Asumsi Normalitas
+h1:regresi-logistik Regresi Logistik
+h2:contoh-regresi-logistik-dalam-rstudio Contoh Regresi Logistik dalam Rstudio
+h3:uji-asumsi-model Uji Asumsi model
+h2:bagaimana-interprestasi-model Bagaimana interprestasi model ?
+h1:regresi-dengan-data-kategori-dummy Regresi Dengan Data Kategori (Dummy)
+h1:regresi-non-linear Regresi Non Linear
+h2:mendeteksi-awal Mendeteksi awal
+fig:scatter-fig2 Diagram Scatter!
+

@@ -1,0 +1,6 @@
+"0","plot(mtcars$hp, mtcars$mpg, "
+"0","     main = ""Scatter Plot of Horsepower vs MPG"","
+"0","     xlab = ""Horsepower"","
+"0","     ylab = ""Miles per Gallon"","
+"0","     col = ""blue"","
+"0","     pch = 19) # Bentuk titik"
