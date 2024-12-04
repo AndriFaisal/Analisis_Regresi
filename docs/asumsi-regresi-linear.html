@@ -270,7 +270,8 @@ Untuk mengatasi multikolinearitas adalah tidak sulit. Hanya saja pilihannya adal
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="asumsi-regresi-linear.html#cb17-1" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
 <pre><code>## Warning: package &#39;car&#39; was built under R version 4.3.1</code></pre>
 <pre><code>## Loading required package: carData</code></pre>
-<pre><code>## Warning: package &#39;carData&#39; was built under R version 4.3.1</code></pre>
+<pre><code>## Warning: package &#39;carData&#39; was built under R version
+## 4.3.1</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="asumsi-regresi-linear.html#cb21-1" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
 <span id="cb21-2"><a href="asumsi-regresi-linear.html#cb21-2" tabindex="-1"></a><span class="fu">vif</span>(regresimtcars1)</span></code></pre></div>
 <pre><code>##      cyl     disp 
@@ -298,7 +299,8 @@ Ha : ρ ≠ 0 terjadi autokorelasi</p>
 <p>Salah satu mengatasi dengan menggunakan lag. Lag ini adalah konsekuensi dengan nilai dari regresi tersebut. Ada beberapa variable respon tidak selalu merespon dengan cepat. Karenanya ada sebuah respon tersebut maka aka nada repson yang terlambat sekali . Adapun bentuk antisipasi memang semuanya bervariasi karena memang tidak langsung. Bahkan kita curiga kalau suatu reaksi sudah diketahui sebelumnya berarti ada efek antisipasi oleh respon tersebut.</p>
 <p>Untuk memeriksa apakah adanya autokorelasi maka kita bisa melakukan hal seperti ini yakni menggunakan dwtest yang ada di package lmtest;</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="asumsi-regresi-linear.html#cb23-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span></code></pre></div>
-<pre><code>## Warning: package &#39;lmtest&#39; was built under R version 4.3.1</code></pre>
+<pre><code>## Warning: package &#39;lmtest&#39; was built under R version
+## 4.3.1</code></pre>
 <pre><code>## Loading required package: zoo</code></pre>
 <pre><code>## Warning: package &#39;zoo&#39; was built under R version 4.3.1</code></pre>
 <pre><code>## 
@@ -340,22 +342,38 @@ BR=  n.R^2
 \end{equation}\]</span></p>
 <p>Setelah kita mengetahui adanya gejala heteroskedatisitas maka kita harus memperbaiki hal tersebut. Ada beberapa hal namun sebelum kita memperbaiki kita harus melihat dulu mengapa terjadi heteroskedatistas</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="asumsi-regresi-linear.html#cb33-1" tabindex="-1"></a><span class="fu">residuals</span>(regresimtcars1)</span></code></pre></div>
-<pre><code>##           Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive 
-##         -0.84395255         -0.84395255         -3.28885510          1.57324352 
-##   Hornet Sportabout             Valiant          Duster 360           Merc 240D 
-##          4.14732774         -2.40601638         -0.25267226         -0.89226849 
-##            Merc 230            Merc 280           Merc 280C          Merc 450SE 
-##         -2.61371193         -2.48751693         -3.88751693          0.11418581 
-##          Merc 450SL         Merc 450SLC  Cadillac Fleetwood Lincoln Continental 
-##          1.01418581         -1.08581419         -1.84730532         -2.09430892 
-##   Chrysler Imperial            Fiat 128         Honda Civic      Toyota Corolla 
-##          1.79401841          5.70804444          3.64629354          7.05160883 
-##       Toyota Corona    Dodge Challenger         AMC Javelin          Camaro Z28 
-##         -4.33979314          0.08281514         -0.50535572         -1.45850859 
-##    Pontiac Firebird           Fiat X1-9       Porsche 914-2        Lotus Europa 
-##          5.47067308          0.61421953          0.16432359          4.04561603 
-##      Ford Pantera L        Ferrari Dino       Maserati Bora          Volvo 142E 
-##          1.06207504         -2.45270705         -0.76710662         -4.42126787</code></pre>
+<pre><code>##           Mazda RX4       Mazda RX4 Wag 
+##         -0.84395255         -0.84395255 
+##          Datsun 710      Hornet 4 Drive 
+##         -3.28885510          1.57324352 
+##   Hornet Sportabout             Valiant 
+##          4.14732774         -2.40601638 
+##          Duster 360           Merc 240D 
+##         -0.25267226         -0.89226849 
+##            Merc 230            Merc 280 
+##         -2.61371193         -2.48751693 
+##           Merc 280C          Merc 450SE 
+##         -3.88751693          0.11418581 
+##          Merc 450SL         Merc 450SLC 
+##          1.01418581         -1.08581419 
+##  Cadillac Fleetwood Lincoln Continental 
+##         -1.84730532         -2.09430892 
+##   Chrysler Imperial            Fiat 128 
+##          1.79401841          5.70804444 
+##         Honda Civic      Toyota Corolla 
+##          3.64629354          7.05160883 
+##       Toyota Corona    Dodge Challenger 
+##         -4.33979314          0.08281514 
+##         AMC Javelin          Camaro Z28 
+##         -0.50535572         -1.45850859 
+##    Pontiac Firebird           Fiat X1-9 
+##          5.47067308          0.61421953 
+##       Porsche 914-2        Lotus Europa 
+##          0.16432359          4.04561603 
+##      Ford Pantera L        Ferrari Dino 
+##          1.06207504         -2.45270705 
+##       Maserati Bora          Volvo 142E 
+##         -0.76710662         -4.42126787</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="asumsi-regresi-linear.html#cb35-1" tabindex="-1"></a>taksiran<span class="ot">&lt;-</span><span class="fu">fitted</span>(regresimtcars1)</span>
 <span id="cb35-2"><a href="asumsi-regresi-linear.html#cb35-2" tabindex="-1"></a>kresid<span class="ot">=</span><span class="fu">residuals</span>(regresimtcars1)<span class="sc">*</span><span class="fu">residuals</span>(regresimtcars1)</span>
 <span id="cb35-3"><a href="asumsi-regresi-linear.html#cb35-3" tabindex="-1"></a><span class="fu">plot</span>(taksiran,kresid)</span></code></pre></div>
